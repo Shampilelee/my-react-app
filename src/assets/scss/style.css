@@ -1,0 +1,149 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+}
+
+header {
+  background: #161616;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  font-size: 3vw;
+  padding: 0em 1em;
+}
+header nav {
+  padding: 0em 1em;
+}
+header nav a {
+  color: rgb(143, 143, 143);
+  text-decoration: none;
+  padding: 1em;
+}
+header nav a:hover {
+  color: rgb(199, 190, 190);
+}
+
+.card {
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px hsl(0, 0%, 0%);
+  padding: 1em;
+  margin: 1rem;
+  text-align: center;
+  max-width: 250px;
+  display: inline-block;
+}
+.card img {
+  max-width: 60%;
+  height: auto;
+  border-radius: 20%;
+}
+.card h2 {
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: rgb(208, 214, 219);
+}
+.card p {
+  font-size: 1vw;
+  color: rgb(166, 169, 170);
+}
+
+.d_L_Theme_Container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90dvh;
+}
+.d_L_Theme_Container h1 {
+  font-size: 5vw;
+  font-weight: 800;
+}
+.d_L_Theme_Container input {
+  width: 30%;
+  font-size: 1.7vw;
+  padding: 0.3em 1em;
+  margin-top: -1em;
+  background: none;
+  color: #5f5d5d;
+  border: none;
+}
+.d_L_Theme_Container h2 {
+  color: #726f6f;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+footer {
+  bottom: 0;
+  background: #0f3314;
+}
+footer .boxes {
+  background: #848385;
+  color: rgb(0, 0, 0);
+}
+footer .boxes .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+footer .boxes .top h3 {
+  font-size: 1.5vw;
+  padding: 0em 0.7em;
+}
+footer .boxes .top form {
+  padding: 0em 1em;
+  width: 22%;
+}
+footer .boxes .top form input {
+  padding: 0.6em;
+  border: none;
+}
+footer .boxes .top form input[type=submit] {
+  background: #313030;
+  color: #b1b0b3;
+}
+footer .boxes .top form input[type=submit]:hover {
+  cursor: pointer;
+}
+footer .boxes .top form input[type=email] {
+  width: 66%;
+}
+footer .boxes .down {
+  background: #4c4c4d;
+  color: #867c7c;
+  display: flex;
+  padding: 0em 1em;
+}
+footer .boxes .down .box {
+  width: 50%;
+}
+footer .boxes .down .box h3 {
+  font-size: 2vw;
+  font-weight: 700;
+}
+footer .boxes .down .box .links a {
+  text-decoration: none;
+  color: #868686;
+  font-size: 1.2vw;
+}
+footer .boxes .down .contact {
+  border-right: 0.1em solid rgb(155, 153, 153);
+}
+footer .boxes .down .pages {
+  padding-left: 1em;
+}
+footer .copyrigth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #000;
+}
+footer .copyrigth h3 {
+  font-size: 1vw;
+  color: rgb(87, 84, 84);
+}/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,31 @@
+
+.d_L_Theme_Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 90dvh;
+
+
+    h1 {
+        font-size: 5vw;
+        font-weight: 800;
+    }
+
+    input {
+        width: 30%;
+        font-size: 1.7vw;
+        padding: 0.3em 1em;
+        margin-top: -1em;
+
+        background: none;
+        color: #5f5d5d;
+        border: none;
+    }
+
+    h2 {
+        color: #726f6f;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+}
+

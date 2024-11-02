@@ -1,0 +1,32 @@
+
+header {
+    background: #161616;
+    top: 0;
+    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    h1 {
+        font-size: 3vw;
+        padding: 0em 1em;
+    }
+
+    nav {
+        padding: 0em 1em;
+        //background: #1d1b1b;
+
+        a {
+            color: rgb(143, 143, 143);
+            text-decoration: none;
+            padding: 1em;
+
+            &:hover {
+                color: rgb(199, 190, 190);
+            }
+        }
+    }
+}
+
+

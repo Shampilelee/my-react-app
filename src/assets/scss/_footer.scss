@@ -1,0 +1,92 @@
+
+footer {
+    bottom: 0;
+    background: #0f3314;
+
+    .boxes{
+        background: #848385;
+        color: rgb(0, 0, 0);
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            h3 {
+                font-size: 1.5vw;
+                padding: 0em 0.7em;
+            }
+
+            form {
+                padding: 0em 1em;
+                width: 22%;
+
+                input {
+                    padding: 0.6em;
+                    border: none;
+                }
+
+                input[type="submit"] {
+                    background: #313030;
+                    color: #b1b0b3;
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+                input[type="email"] {
+                    width: 66%;
+                }
+            }
+        }
+
+        .down {
+            background: #4c4c4d;
+            color: #867c7c;
+            display: flex;
+            padding: 0em 1em;
+
+
+            .box {
+                //background: #1f1212;
+                width: 50%;
+
+                h3 {
+                    font-size: 2vw;
+                    font-weight: 700;
+                }
+
+                .links {
+                    a {
+                        text-decoration: none;
+                        color: #868686;
+                        font-size: 1.2vw;
+                    }
+                }
+            }
+
+            .contact {
+                border-right: 0.1em solid rgb(155, 153, 153);
+            }
+
+            .pages {
+                padding-left: 1em;
+            }
+        }
+
+    }
+    
+    .copyrigth {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #000;
+        
+
+        h3 {
+            font-size: 1vw;
+            color: rgb(87, 84, 84);
+        }
+    }
+}

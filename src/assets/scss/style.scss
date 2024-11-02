@@ -1,0 +1,17 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+}
+
+@import './header';
+@import './card';
+@import './d_L_Theme_Container';
+
+
+
+@import './footer';
+
