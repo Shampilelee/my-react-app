@@ -1,7 +1,9 @@
 import "./assets/scss/style.css";
 import Header from "./Header";
 import Footer from "./Footer";
-import Dark_Ligth_Theme from "./DarkLightTheme";
+import Ecomm from "./Final_Projects/Ecomm";
+
+
 
 
 
@@ -9,9 +11,9 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Dark_Ligth_Theme />
-      <Footer />
+      {/* <Header /> */}
+        <Ecomm />
+      {/* <Footer /> */}
     </>
   );
 }

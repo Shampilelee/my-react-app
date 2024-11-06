@@ -1,0 +1,70 @@
+
+.login_Signup {
+    height: 100dvh;
+
+    display: flex;
+    
+    .container {
+        width: 50%;
+        //background: #000;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: 3vw;
+        }
+
+
+        form {
+            border: solid 0.1em white;
+            border-radius: 0.3em;
+            padding: 1em;
+            width: 70%;
+            transition: ease-in-out 3s;
+
+            .goto_SignUp {
+                justify-self: end;
+                cursor: pointer;
+                font-size: 1.2vw;
+
+                &:hover {
+                    color: yellowgreen;
+                }
+            }
+        }
+
+        h3 {
+            font-size: 2.5vw;
+        }
+
+        input {
+            width: 94%;
+            border: none;
+            padding: 0.7em;
+            margin-bottom: 0.3em;
+            font-size: 1.2vw;
+
+            background: #1d1c1c;
+            color: rgb(173, 168, 168);
+
+            &[type="submit"], &[type="reset"] {
+                width: 98.7%;
+                cursor: pointer;
+                font-weight: 600;
+            }
+
+            &[type="submit"] {
+                background: rgb(13, 55, 145);
+            }
+
+            &[type="reset"] {
+                background: rgb(153, 153, 8);
+                color: #000;
+            }
+        }
+    }
+
+}

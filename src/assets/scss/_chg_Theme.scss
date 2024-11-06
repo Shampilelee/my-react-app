@@ -1,0 +1,35 @@
+
+.chg_Theme {
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 1s;
+
+    color: rgba(255, 255, 255, 0.87);
+    background-color: #242424;
+
+    h1 {
+        font-size: 3.7vw;
+    }
+}
+
+.day {
+    color: #242424;
+    background-color: rgba(255, 255, 255, 0.87);
+}
+
+.switch_Btn {
+    background: rgba(255, 255, 255, 0.87);
+    border: none;
+    margin-left: 1em;
+    padding: 0.2em 0.7em;
+    font-size: 2.5vw;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
+.switch_Btn_Day {
+    background: rgba(68, 67, 67, 0.87);
+}
+

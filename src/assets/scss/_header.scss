@@ -1,6 +1,9 @@
 
 header {
     background: #161616;
+    position: static;
+    left: 0;
+    right: 0;
     top: 0;
     
     display: flex;
@@ -21,12 +24,22 @@ header {
             color: rgb(143, 143, 143);
             text-decoration: none;
             padding: 1em;
+            font-size: 1.5vw;
 
             &:hover {
                 color: rgb(199, 190, 190);
             }
         }
     }
+}
+
+// SCROLL DOWN AND UP EFFEST
+.transparent {
+    background: #161616da;
+    position: fixed;
+    left: 0;
+    right: 0;
+    transition: ease-in-out 1s;
 }
 
 

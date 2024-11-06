@@ -1,19 +1,17 @@
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 
 
-function Dark_Ligth_Theme() {
+function Display_What_Itype() {
     
     const inputRef = useRef("null");
 
     const [word, set_Word] = useState("Say something")
-
-    useEffect(() => console.log("RENDERED"), [word])
     
     const showText = () => set_Word(inputRef.current.value)
 
 
     return (
-        <div className="d_L_Theme_Container">
+        <div className="display_Me_Container" id="pg1">
             <h1>What's on your mind?</h1>
             <input type="text" ref={inputRef} onChange={showText} placeholder="Say here..." />
             <h2>{word}</h2>
@@ -22,4 +20,4 @@ function Dark_Ligth_Theme() {
     
 }
 
-export default Dark_Ligth_Theme
+export default Display_What_Itype

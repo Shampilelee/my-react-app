@@ -1,0 +1,1827 @@
+
++++++ Started Refreshing On ReactJs From The 24th October, 2024 20:18 Thursday Evening. +++++ 
+ ///// REACT REFREASHERAL \\\\\
+
+/// INSTALLATIONS \\\
+GOOGLE node.js and install it.
+
+/// Install React \\\
+in cmd [ npm create vite@latest ]
+Follow Instructions that comes.
+
+// Importing and Exporting \\
+IMPORTING
+[
+    import Header from "./Header";
+
+    function App() {
+
+    return (
+        <>
+            <Header />
+            <Header />
+            <Header />
+        </>
+    );
+    }
+
+    export default App
+]
+
+EXPORTING
+[
+    function Header(params) {
+    
+        return (
+            <>
+            <header>
+                <h1>My React Website</h1>
+            </header>
+            </>
+        );
+    }
+
+    export default Header;
+]
+
+
+TO ADD COPYRIGHT, "<p> &copy; <p/>"
+
+WE CAN ADD JS TO OUR RETURN STATEMENT, WE'LL NEED '{}' EXAMPLE BELOW.
+[
+    function Footer() {
+    
+        return (
+            <footer>
+                <p>&copy; {new Date().getFullYear()} your website name</p>
+            </footer>
+        );
+    }
+]
+
+
+/// VARIABLES IN REACT \\\
+[
+    function Food() {
+
+        const food1 = "Orange";
+        const food2 = "Banana";
+        
+        return (
+            <ul>
+                <li>Apple</li>
+                <li>{food1}</li>
+                <li>{food2.toUpperCase()}</li>
+            </ul>
+        );
+    }
+
+    export default Food
+]
+
+
+
+//// PROJECT 1 - CARD COMPONENT \\\\
+IN JSX/REACT 'class' is a reserved name to use class in HTML for styling use [className] rather.
+
+-- IMPORT SOMETHING AND CREATE ALIES TO REFRE TO THE IMPORTED FILE OR CODE. --
+[
+    import ProfilePic from "./assets/img/pic.png";
+    function Card() {
+        
+        return (
+            <>
+                <div className="card">
+                    <img src={ProfilePic} alt="profile pic" />
+                    <h2>Dhope React</h2>
+                    <p>Refreshing React skills after some time out.</p>
+                </div>
+            </>
+        );
+    }
+]
+
+
+
+/// STYLING WITH RAW CSS EXTERNAL, MODULES, AND INLINE. not including TAILWAVE OR SCSS \\\
+[
+    1. EXTERNAL
+    [
+        function Button () {
+    
+            return (
+                <button className="button">Click Me</button>
+            )
+        }
+
+
+        .button {
+            background-color: hsl(200, 100%, 50%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    ]
+    NAMING CONVENTIONS (2-ELEMENTS-WITH-THE-SAME-NAME) CAN BE A PROBLEM WITH THIS METHOD OF STYLING.
+    TWO BUTTONS YOU MAY CREATE MIGHT HAVE THE SAME NAME, SO FOR A LARGE PROJECT, YOU WILL NEED A STRONG NAMING CONVENTION.
+    THAT'S WERE A MODULES COME IN.
+
+
+    2. MODULES
+    [
+        -- CREATING A MODULE --
+        WE'LL CREATE A DEDICATED STYLE SHEET SPECIFILLY FOR EACH COMPONENT.
+        1. CREATE A NEW FOLDER FOR A COMPONENT(Button).
+        2. MOVE Button COMPONENT, TO Button Folder.
+        3. WITHIN OUR Button Folder, We'll CREATE A MODULE STYLE SHEET [Button.module.css]
+        4. Peast YOUR CSS CODE THERE [
+            .button {
+                background-color: hsl(200, 100%, 50%);
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                border: none;
+                cursor: pointer;
+            }
+        ]
+        5. NOW, IN Button.jsx IMPORT YOUR MODULE LIKE THIS: [ import styles from "./Button.module.css"; ].
+        6. NOW, FOR THE className FOR YOUR BUTTON, SET IT LIKE THIS: [ <button className={styles.name_In_Style_Sheet}>Click Me</button> ] 
+            example: [ <button className={styles.button}>Click Me</button> ]
+            Rigth Click On The Button And Go To Inspect, The className Of The Button Would Be Uniqe Like This: [ ._button_4e1dt_1 ].
+            THIS METHOD AVOIDS NAMING CONVENTIONS. THE className IS GENERATED VIA A HASH.
+            DOWN-SIDE OF MODULES ARE ADDITION SET-UP, GLOBAL STYLE AR'NT APPLIED EASILY. (Importing from one place to another...)
+    ]
+
+
+    3. INLINE
+    [
+        function Button () {
+    
+            const styles = {
+                backgroundColor: 'hsl(200, 100%, 50%)',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '5px',
+                border: 'none',
+                cursor: 'pointer'
+            }
+
+            return (
+                <button style={styles}>Click Me</button>
+            )
+        }
+
+        INLINE STYLING IS EASY AND SIMPLE TO UNDERSTAND.
+        IS BETTER FOR COMPONENTS WITH MINIMUN STYLING.
+    ]
+]
+
+
+/// PROPS \\\
+[
+    props = read-only properties that are shared between components.
+           A parent component can send data to a child component.
+           <Component key=value />
+
+    props SHORT for PROPERTIES is a JS Object.
+    EXAMPLE OF props.
+    [
+        Student.jsx
+        [
+            function Student(props) {
+                return (
+                    <>
+                        <p>Name: {props.name}</p>
+                        <p>Age: {props.age}</p>
+                        <p>Is_Student: {props.is_Student ? 'Yes' : 'No'}</p>
+                    </>
+                )
+            }
+            export default Student
+        ]
+        
+
+        App.jsx
+        [
+            import Header from "./Header";
+            import Footer from "./Footer";
+            import Student from "./Student";
+            function App() {
+
+                return (
+                    <>
+                        <Header />
+                            <Student name="James" age={28} is_Student={true}/>
+                            <Student name="Thimothy" age={30} is_Student={false}/>
+                            <Student name="Kelvin" age={32} is_Student={false}/>
+                        <Footer />
+                    </>
+                );
+            }
+        ]
+    ]
+]
+
+
+/// propTypes \\\
+[
+    propTypes = Is a mechanism that ensure that; the value passed in, 
+                is of the correct datatype, it will display warning in the console WITHOUT STOPPING THE PROGRAM FROM RUNNING. 
+                IT'S A GOOD PRATICE TO USE IT. EXSPECIALLY FOR DEBUGGING.
+
+    WE'LL NEED TO IMPORT IT FIRST: [ import PropTypes from 'prop-types'; ]
+
+    EXAMPLE:
+    [
+        Student.jsx
+        [
+            import PropTypes from 'prop-types';
+
+            function Student(props) {
+                return (
+                    <>
+                        <p>Name: {props.name}</p>
+                        <p>Age: {props.age}</p>
+                        <p>Is_Student: {props.is_Student ? 'Yes' : 'No'}</p>
+                    </>
+                )
+            }
+
+            Student.PropTypes = {
+                name: PropTypes.string,
+                age: PropTypes.number,
+                is_Student: PropTypes.bool
+            }
+
+            export default Student
+        ]
+    ]
+]
+
+
+/// defaultProps \\\
+[
+    defaultProps = default values for props in case they are not
+    passed in from the user or parent component.
+    eg: name: "Guest"
+
+    [
+        Student.jsx
+        [
+            import PropTypes from 'prop-types';
+
+            function Student(props) {
+
+                return (
+                    <>
+                        <p>Name: {props.name}</p>
+                        <p>Age: {props.age}</p>
+                        <p>Is_Student: {props.is_Student ? 'Yes' : 'No'}</p>
+                    </>
+                )
+            }
+
+            Student.defaultProps = {
+                name: 'Guest',
+                age: 0,
+                is_Student: false
+            }
+
+            export default Student
+        ]
+    ]
+]
+
+
+/// CONDITIONAL RENDERING \\\
+[
+    conditional rendering = Allows you to control what gets rendered
+                            in your application based on certain conditions (show, hide, or change components)
+
+    EXAMPLES
+    [
+        User_Greeting.jsx
+        [
+            import PropTypes from 'prop-types';
+
+            function UserGreeting(props) {
+
+                const welcm_Msg = <h2>Welcome {props.usrname}</h2>
+                const login_Prompt = <h2>Kindly Login</h2>
+                
+                return (
+                    props.is_LoggedIn ? welcm_Msg : login_Prompt               
+                )
+            }
+
+            UserGreeting.Proptypes = {
+                is_LoggedIn: PropTypes.bool,
+                usrname: PropTypes.string
+            }
+
+            UserGreeting.defaultProps = {
+                is_LoggedIn: false,
+                usrname: 'Guest'
+            }
+
+            export default UserGreeting
+        ]
+
+
+        App.jsx
+        [
+            import Header from "./Header";
+            import UserGreeting from "./User_Greeting";
+            import Footer from "./Footer";
+
+            function App() {
+
+                return (
+                    <>
+                    <Header />
+                    <UserGreeting is_LoggedIn={false} usrname="Dhope" />
+                    <UserGreeting is_LoggedIn={true} usrname="Dhope" />
+                    <UserGreeting is_LoggedIn={true} />
+                    <UserGreeting />
+                    <Footer />
+                    </>
+                );
+            }
+
+            export default App
+        ]
+    ]
+]
+
+
+/// RENDERING LIST \\\
+[
+    
+    EXAMPLE 1 - SIMPLE List
+    [
+        function List() {
+            const fruits = ["Apple", "Mango", "Orange", "Banana", "Coconut"]
+
+            const list_Item = fruits.map(fruit => <li>{fruit}</li>)
+            return (<ol>{list_Item}</ol>)
+        }
+
+        export default List
+    ]
+
+
+    EXAMPLE 2 - OBJECT ARRAY LIST
+    [
+        
+        function List() {
+            const fruits = [
+                {id: 1, name: "Apple", calories: 95}, 
+                {id: 2, name: "Mango", calories: 45}, 
+                {id: 3, name: "Orange", calories: 35}, 
+                {id: 4, name: "Banana", calories: 75}, 
+                {id: 5, name: "Coconut", calories: 25}
+            ]
+
+            // YOU MUST SET THE KEY TO A UNIQE IDENTIFIER IN YOUR LIST [ <li key={fruit.id}> ]
+
+            const list_Item = fruits.map(fruit => <li key={fruit.id}>{fruit.calories}</li>)
+            return (<ol>{list_Item}</ol>)
+        }
+
+        export default List
+    ]
+
+
+    // TO GET SPACE BETWEEN ELEMENTS [ &nbsp; ]
+    EXAMPLE 3 - SORTING OBJECT ARRAY LIST
+    [
+        SORT LIST
+        [
+            function List() {
+                const fruits = [
+                    {id: 1, name: "Apple", calories: 95}, 
+                    {id: 2, name: "Mango", calories: 45}, 
+                    {id: 3, name: "Orange", calories: 35}, 
+                    {id: 4, name: "Banana", calories: 75}, 
+                    {id: 5, name: "Coconut", calories: 25}
+                ]
+
+                /// SORTING LIST \\\
+                // THIS CUSTOM FUNCTION WILL LOOP THROUGH THE LIST 
+                // 'a' FOR FIRST ITEM, 'b' FOR SECOND AND KEEPS ON LOOP 2 BY 2.
+                // ALPHABETICAL SORTING.
+                //fruits.sort((a, b) => a.name.localeCompare(b.name)) // ALPHABETICAL
+                //fruits.sort((a, b) => b.name.localeCompare(a.name)) // REVERSE ALPHABETICAL
+                //fruits.sort((a, b) => a.calories - b.calories) // SORTING NUMBER 
+                fruits.sort((a, b) => b.calories - a.calories) // REVERSE SORTING NUMBER 
+                
+                const list_Item = fruits.map(fruits => <li key={fruits.id}> {fruits.name} &nbsp; <b>{fruits.calories}</b></li>)
+                return (<ol>{list_Item}</ol>)
+            }
+
+            export default List
+        ]
+
+
+        FILTER LIST
+        [
+            function List() {
+                const fruits = [
+                    {id: 1, name: "Apple", calories: 95}, 
+                    {id: 2, name: "Mango", calories: 45}, 
+                    {id: 3, name: "Orange", calories: 35}, 
+                    {id: 4, name: "Banana", calories: 75}, 
+                    {id: 5, name: "Coconut", calories: 25}
+                ]
+                
+                /// FILTER LIST \\\
+                const lowCalo_Fruits = fruits.filter(fruit => fruit.calories < 40)
+
+                const list_Item = lowCalo_Fruits.map(lowCalo_Fruit => <li key={lowCalo_Fruit.id}> {lowCalo_Fruit.name} &nbsp; <b>{lowCalo_Fruit.calories}</b></li>)
+                return (<ol>{list_Item}</ol>)
+            }
+
+            export default List
+        ]
+    ]
+
+
+    EXAMPLE 4 - Re-useable LIST with PROPS.
+    [
+        List.jsx
+        [
+            function List(props) {
+
+                // LIST NAME
+                const list_Container = props.items;
+                // LIST TYPE/CATEGORY
+                const list_Category = props.category;
+                
+                const list_Item = list_Container.map(container => <li key={container.id}> {container.name} &nbsp; <b>{container.calories}</b></li>)
+                
+                return (
+                    <>
+                        <h2>{list_Category}</h2>
+                        <ol>{list_Item}</ol>
+                    </>
+                )
+            }
+
+            // DON'T USE THE VARIABLE NAME, USE THE 'props.NAME' EX: items: [], category: "Category".   
+            List.prototype = {
+                category: PropTypes.string,
+                items: PropTypes.arrayOf(PropTypes.shape({id: PropTypes.number, name: PropTypes.string, calories: PropTypes.number}))
+            }
+
+            List.defaultProps = {
+                category: "Category",
+                items: []
+            }
+
+            export default List
+        ]
+
+
+        App.jsx
+        [
+            import "./assets/scss/style.css";
+            import Header from "./Header";
+            import List from "./List";
+            import Footer from "./Footer";
+
+            function App() {
+
+                const fruits = [
+                    {id: 1, name: "Apple", calories: 95}, 
+                    {id: 2, name: "Mango", calories: 45}, 
+                    {id: 3, name: "Orange", calories: 35}, 
+                    {id: 4, name: "Banana", calories: 75}, 
+                    {id: 5, name: "Coconut", calories: 25}
+                ]
+
+                const vegetables = [
+                    {id: 1, name: "potatoes", calories: 95}, 
+                    {id: 2, name: "celery", calories: 45}, 
+                    {id: 3, name: "carrots", calories: 35}, 
+                    {id: 4, name: "corn", calories: 75}, 
+                    {id: 5, name: "broccoli", calories: 25}
+                ]
+
+                return (
+                    <>
+                        <Header />
+                        <List items={fruits} category="Fruits"/>
+                        <List items={vegetables} category="vegetables"/>
+                        <Footer />
+
+                        {/* TO RENDER LIST ONLY WHEN IT HAS DATA, USE THIS CODE */}
+                            { fruits.length > 0 ? <List items={fruits} category="Fruits"/> : null }
+                            { vegetables.length > 0 ? <List items={vegetables} category="vegetables"/> : null }
+
+                        {/* SHORT HAND */}
+                            { fruits.length > 0 && <List items={fruits} category="Fruits"/> }
+                            { vegetables.length > 0 && <List items={vegetables} category="vegetables"/> }
+                    </>
+                );
+            }
+
+            export default App
+        ]
+    ]
+]
+
+
+/// CLICK EVENT \\\
+[
+    click event = An interaction when a user clicks on a specific element
+                  We can respond to clicks by passing a callback to the onClick event Handler.
+
+    
+    SIMPLE EVENT-HANDLING
+    [
+        function Button () {
+    
+            const styles = {
+                backgroundColor: 'hsl(200, 100%, 50%)',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '5px',
+                border: 'none',
+                cursor: 'pointer'
+            }
+
+            const handle_Click1 = () => console.log('YEAH');
+            const handle_Click2 = (name) => console.log(`${name} just clicked me`);
+
+            return (
+                <button style={styles} onClick={() => handle_Click2('Dhope')}>Click Me 🤣</button>
+            )
+        }
+
+        export default Button
+    ]
+
+    CONDITIONAL EVENTHANDLING
+    [
+        function Button () {
+
+            let count = 0;
+
+            const handle_Click = (name) => {
+                if (count < 3) {
+                    count++;
+                    console.log(`${name} you clicked me ${count} time/s`);
+                    
+                } else {
+                    console.log(`${name} stop clicking me!`);
+                }
+            }
+
+            return (
+                <button onClick={() => handle_Click('Dhope')}>Click Me 🤣</button>
+            )
+        }
+
+        export default Button
+    ]
+
+    EVENT PARAMETER
+    [
+        With Click Events We Are Automatically Providered with an [event] argument,
+        It's An Object That Describes The Event That Occured.
+        [event] Is Usually shorten to [e].
+
+
+        GO TO console AND SEE ALL THE EVENTS
+        [
+            function Button () {
+
+                const handle_Click = (e) => console.log(e);
+                
+                return (
+                    <button onClick={(e) => handle_Click(e)}>Click Me 🤣</button>
+                )
+            }
+
+            export default Button
+        ]
+
+        Change Text Context onClick
+        [
+            
+            function Button () {
+
+                const handle_Click = (e) => e.target.textContent = "CLICKED";
+
+                return (
+                    <button onClick={(e) => handle_Click(e)}>Click Me 🤣</button>
+                )
+            }
+
+            export default Button
+        ]
+
+        Change Style onClick [remove from screen(display)]
+        [
+            function Button () {
+
+                const handleClick = (e) => e.target.style.display = 'none';
+                const img_URL = './src/assets/img/pic.png';
+
+                return <img onClick={(e) => handleClick(e)} src={img_URL} />
+            }
+
+            export default Button
+        ]
+    ]
+]
+
+
+/// React Hooks \\\
+[
+    React hook = Special Function that allows functionl components
+                 to use React features without writing class components.
+                 eg: (useState, useEffect, useContext, useReducer, useCallback, and more...)
+
+
+    // useState() \\
+    [
+        useState() = A React hook that allows the creation of a stateful variable
+                 AND a setter function to update it's value in the virtual DOM.
+                 [name, setName]
+
+        Importing useState(): [ import React, {useState} from 'react'; ]
+
+        The useState() Function return an array with 2 elements: A Variable and a Setter Function.
+        We're going to use array destruction to extract these elements.
+        eg: [ const [name, setName] = useState(); ]
+
+        SIMPLE EXAMPLE
+        [
+            import React, {useState} from 'react';
+
+            function My_Component(params) {
+                
+                const [name, setName] = useState('Initial Name');
+
+                const updateName = () => setName('Dhope')
+
+                return (
+                    <div>
+                        <p>Name: {name}</p>
+                        <button onClick={updateName}>Set Name</button>
+                    </div>
+                )
+            }
+
+            export default My_Component
+        ]
+
+        ALL DATA-TYPE EXAMPLE
+        [
+            import React, {useState} from 'react';
+
+            function My_Component() {
+                
+                const [name, setName] = useState('Initial Name');
+                const [age, setAge] = useState(0);
+                const [isEmployed, setIsEmployed] = useState(false);
+
+                const updateName = () => setName('Dhope')
+
+                const increaseAge = () => setAge(age + 1) // DON'T USE 'age++' IT'S WOUD'NT WORK.
+
+                const toggleIsEmloyedStatus = () => setIsEmployed(!isEmployed)
+
+                return (
+                    <div>
+                        <p>Name: {name}</p>
+                        <button onClick={updateName}>Set Name</button>
+
+                        <p>Age: {age}</p>
+                        <button onClick={increaseAge}>Incresae Age</button>
+
+                        <p>Is Employed: {isEmployed ? 'Yes' : 'No'}</p>
+                        <button onClick={toggleIsEmloyedStatus}>Toggle</button>
+                    </div>
+                )
+            }
+
+            export default My_Component
+        ]
+
+
+        //// PROJECT 2 - COUNTER PROGRAM \\\\
+        [
+            import React, {useState} from 'react';
+
+            function My_Component() {
+                
+                const [number, setNumber] = useState(0);
+
+                const increase = () => setNumber(number + 1) // DON'T USE 'age++' IT'S WOUD'NT WORK.
+
+                const reset = () => setNumber(0)
+
+                const decrease = () => setNumber(number - 1)
+
+                return (
+                    <div>
+                        <p> {number}</p>
+                        <button onClick={decrease}>Decrease</button>
+
+                        <button onClick={reset}>Reset</button>
+
+                        <button onClick={increase}>Increase</button>
+                    </div>
+                )
+            }
+
+            export default My_Component
+        ]
+    ]
+]
+
+
+/// onChange EVENT HANDLER \\\
+[
+    onChange = event handler used Primarily with form elements
+               ex: <input>, <textarea>, <select>, <radio>
+               Triggers a function every time the value of the input changes.
+
+
+    EXAMPLE - DISPLAY VALUE AS I TYPE
+    [
+        import React, {useState} from 'react';
+
+        function My_Component() {
+            
+            const [name, setName] = useState("");
+
+            const nameChange = (e) => setName(e.target.value);
+
+            return (
+                <div>
+                    <input value={name} onChange={nameChange} />
+                    <h3>Name: {name}</h3>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+    EXAMPLE - ECOMM
+    [
+        import React, {useState} from 'react';
+
+        function My_Component() {
+            
+            const [name, setName] = useState("");
+            const [quantity, setQuantity] = useState(1);
+            const [comment, setComment] = useState("");
+            const [payment, setPayment] = useState("");
+            const [shipping, setShipping] = useState("");
+
+            const nameChange = (e) => setName(e.target.value);
+            const quantityChange = (e) => setQuantity(e.target.value);
+            const commentChange = (e) => setComment(e.target.value);
+            const paymentChange = (e) => setPayment(e.target.value);
+            const shippingChange = (e) => setShipping(e.target.value);
+
+            return (
+                <div>
+                    <input value={name} onChange={nameChange} />
+                    <h3>Name: {name}</h3>
+
+                    <input type='number' value={quantity} onChange={quantityChange} />
+                    <h3>Quantity: {quantity}</h3>
+
+                    <textarea value={comment} onChange={commentChange} placeholder='Enter Delivery Instructions'></textarea>
+                    <h3>Comment: {comment}</h3>
+
+                    <select value={payment} onChange={paymentChange}>
+                        <option value="">Select Option</option>
+                        <option value="VISA">VISA</option>
+                        <option value="Mastercard">Mastercard</option>
+                        <option value="Giftcard">Giftcard</option>
+                    </select>
+                    <h3>Payment: {payment}</h3>
+
+                    <label>
+                        <input type="radio" value="Pick Up" 
+                                // IT WILL ONLY BE checked if the variable(shipping) Is Equare To "Pick Up"
+                                checked={shipping === "Pick Up"}
+                                onChange={shippingChange} />
+                        Pick Up
+                    </label><br />
+
+                    <label>
+                        <input type="radio" value="Delivery"
+                                // IT WILL ONLY BE checked if the variable(shipping) Is Equare To "Delivery"
+                                checked={shipping === "Delivery"} 
+                                onChange={shippingChange} />
+                        Delivery
+                    </label>
+                    <h3>Shipping: {shipping}</h3>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+
+    //// PROJECT 3 - COLOR PICKER and Background Color Changer \\\\
+    [
+        import React, {useState} from 'react';
+
+        function My_Component() {
+            
+            const [color, setColor] = useState("#FFFFFFFF");
+
+            function colorChange (e) {
+                setColor(e.target.value);
+            }
+
+            return (
+                <div>
+                    <h1>Color Picker</h1>
+                    <div style={{background: color}}>
+                        <p>Selected Color: {color}</p>
+                    </div>
+
+                    <label>Select a Color:</label>
+                    <input type="color" value={color} onChange={colorChange} />
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+]
+
+
+/// updater function \\\
+[
+    updater function = A function passed as an argument to setState() Usually
+                       ex. setYear(year => year + 1)
+                       Allow for safe updates based on the previous state
+                       Used with multiple state updates and asynchronous functions.
+                       GOOD PRACTICE TO USE updater functions.
+
+    function increase () {
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+    }
+    OUTPUT: [ 1 ] NOT [ 3 ]
+    We're using the CURRENT state to calculate the NEXT state
+    After using a 'setter' function 'setNumber(number + 1);' It dose not trigger an update.
+    React batches together 'state update' for performance resons (batches all and update ONCE).
+    REACT DO'NT WORK LIKE THIS, CODE BELOW
+    [
+        setNumber(number + 1);
+        // UPDATE
+        setNumber(number + 1);
+        // UPDATE
+        setNumber(number + 1);
+        // UPDATE
+    ]
+
+    BUT WORKS LIKE THIS, CODE BELOW
+    [
+        setNumber(number + 1);
+        setNumber(number + 1);
+        setNumber(number + 1);
+        // UPDATE
+
+        WE'RE SETTING 'number' TO BE '1' 3 SPERATE TIMES, AND THEN UPDATE.
+    ]
+
+
+    For 'multiple state updates' It Should Be This Way:
+    Use The CURRENT state To calculate the NEXT state.
+    NEXT state becomes the CURRENT state ONLY after an update.
+
+    In React It's Common to do this [ setNumber(prevNumber => prevNumber + 1); ] 
+    Or this [ setNumber(n => n + 1); ]
+    Even Thoug This Will work [ setNumber(number => number + 1); ] 
+    BUT IT'S ADVICED AND COMMON, TO USE ANY OF THE FIRST TWO APPROACH.
+    NOW YOU GET THE RESULTS BELOW.
+    [
+        setNumber(n => n + 1);
+        // UPDATE
+        setNumber(n => n + 1);
+        // UPDATE
+        setNumber(n => n + 1);
+        // UPDATE
+    ]
+    OUTPUT: [ 3 ]
+
+    'n' Represents The previous(PENDING) number not the current thus why it works.
+
+    React Takes The PENDING state to calculate the NEXT state.
+    React Puts your updater function in a queue (waiting inline).
+    During The next render, React will call them in the same order
+    IT'S GOOD FOR MULTIPLE STATE UPDATES. EVEN FOR ONCE IT'S STILL A GOOD PRATICE [ setNumber(n => n + 1); ]
+
+    USE IT WHERE AND WHEN NECESSARY, 
+    NOT THIS 
+    [
+        function reset() {
+            setNumber(n => n = 0)
+        }
+    ]
+
+    WHILES YOU CAN KEEP IT LIKE THIS
+    [
+        function reset() {
+            setNumber(0)
+        }
+    ]
+]
+
+
+/// update the state of Object \\\
+[
+    import React, {useState} from 'react';
+
+    function My_Component() {
+        
+        const [car, setCar] = useState({year: 2024, make: "Ford", model: "Mustang"});
+
+        const yearChange = (e) => {
+            // c = car
+            // '...c' is a spread operator of the car object, 
+            // It helps to keep the car object from being overwritten, 
+            // the only thing that will be changed, is the change that the user will make
+            setCar(c => ({...c, year: e.target.value}))
+        }
+
+        const makeChange = (e) => setCar(c => ({...c, make: e.target.value}))
+
+        const modelChange = (e) => setCar(c => ({...c, model: e.target.value}))
+
+        return (
+            <div>
+                <p>Your Favorite car is: {car.year} {car.model} {car.make}</p>
+
+                <input type="number" value={car.year} onChange={yearChange} /><br/>
+                <input type="text" value={car.model} onChange={modelChange} /><br/>
+                <input type="text" value={car.make} onChange={makeChange} />
+            </div>
+        )
+    }
+
+    export default My_Component
+]
+
+
+/// update the state of Array \\\
+[
+    // ADD AND REMOVE ELEMENTS FROM Array
+    // TO-DO LIST
+    [
+        import React, {useState} from 'react';
+
+        function My_Component() {
+            
+            const [food, setFood] = useState(["Apple", "Mango", "Banana"]);
+
+            const addFood = () => {
+
+                const newFood = document.getElementById("foodItem").value;
+                document.getElementById("foodItem").value = '';
+
+                setFood(f => ([...f, newFood]))
+            }
+
+            const removeFood = (index) => {
+                // CLICK TO REMOVE FOOD
+                // food.filter(element, i) 
+                // 'element' is not used thus why we do this food.filter(_, i)
+                setFood( food.filter((_, i) => i !== index) )
+            }
+
+            return (
+                <div>
+                    <h2>List of Food</h2>
+                    <ul>
+                        {/* 'index' IS GIVEN AUTOMATICALLY */}
+                        {   
+                            food.map((food, index) => 
+                                <li key={index} onClick={() => removeFood(index)}>
+                                    {food}
+                                </li>
+                            ) 
+                        }
+                    </ul>
+
+                    <input type="text" id='foodItem' placeholder='Enter Food Name' />
+                    <button onClick={addFood}>Add Food</button>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+]
+
+
+/// update the state of an Array of Objects \\\
+[
+    // to-do list / add and remove cars
+    [
+        import React, {useState} from 'react';
+
+        function My_Component() {
+            
+            const [car, setCar] = useState([]);
+            const [carYear, setCarYear] = useState(new Date().getFullYear());
+            const [carMake, setCarMake] = useState("");
+            const [carModel, setCarModel] = useState("");
+
+            const addCar = () => {
+
+                const newCar = {year: carYear, make: carMake, model: carModel}
+                setCar(c => [...c, newCar])
+
+                // RESET THE FILLS
+                setCarYear(new Date().getFullYear())
+                setCarMake('')
+                setCarModel('')
+            }
+
+            const removeCar = (index) => setCar(c => c.filter((_, i) => i !== index))
+
+            const changeYear = (e) => setCarYear(e.target.value)
+
+            const changeMake = (e) => setCarMake(e.target.value)
+
+            const changeModel = (e) => setCarModel(e.target.value)
+
+
+            return (
+                <div>
+                    <h2>List of Car Object</h2>
+                    <ul>
+                        { 
+                            car.map((element, index) =>
+                                <li key={index} onClick={() => removeCar(index)}>
+                                    {element.year} {element.make} {element.model}
+                                </li>
+                            ) 
+                        }
+                    </ul>
+
+                    <input type="number" value={carYear} onChange={changeYear} /><br/>
+                    <input type="text" value={carMake} onChange={changeMake} placeholder='Enter Car Make' /><br/>
+                    <input type="text" value={carModel} onChange={changeModel} placeholder='Enter Car Model' /><br/>
+                    <button onClick={addCar}>Add Car</button>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+]
+
+
+
+//// PROJECT 4 - TO DO LIST APP \\\\
+[
+    import React, {useState} from 'react';
+
+    function My_Component() {
+        
+        const [tasks, setTasks] = useState([]);
+        const [newTask, setNewTask] = useState("");
+
+        // WE WRITE THIS CODE, SO WE CAN SEE AND GET THE TEXT AS WE TYPE.
+        const inputChange = (e) => setNewTask(e.target.value)
+
+        const addTask = () => {
+
+            // BLOCK EMPTY('') TASKS
+            if (newTask.trim() !== "") {
+                setTasks(t => [...t, newTask])
+                setNewTask("")
+            }
+        }
+
+        
+        const removeTask = (index) => setTasks(t => t.filter((_, i) => i !== index))
+        // OR THIS APPROACH
+        /* const removeTask = (index) => {
+            const updatedTasks = tasks.filter((_, i) => i !== index); 
+            setTasks(updatedTasks)
+        }  */
+        
+        
+        const moveTaskUp = (index) => {
+
+            // CHECKING IF ELEMENT IS ALREADY AT THE TOP
+            if (index > 0) {
+                // SPREAD THE CURRENT 'tasks' INTO 'updatedTasks'
+                // !! YOU NEED TO ADD ';' TO '[...tasks]' LIKE THIS 'const updatedTasks = [...tasks];'
+                const updatedTasks = [...tasks];
+
+                // THIS CODE WILL SWAP TWO ELEMENTS WITHIN AN ARRAY, USING ARRAY DESTRUCTION.
+                // TAKE THE currentIndex(index), SUBTRACT '1' FROM IT(index - 1) AND SWAP THE (index - 1) WITH (index) DONE.
+                [updatedTasks[index], updatedTasks[index - 1]] = 
+                [updatedTasks[index - 1], updatedTasks[index]]
+
+                setTasks(updatedTasks)
+            }
+        }
+
+        const moveTaskDown = (index) => {
+            
+            if (index < tasks.length - 1) {
+                const updatedTasks = [...tasks];
+
+                [updatedTasks[index + 1], updatedTasks[index]] = 
+                [updatedTasks[index], updatedTasks[index + 1]]
+
+                setTasks(updatedTasks)
+            }
+        }
+
+        return (
+            <div>
+                <h2>To-Do-List</h2>
+                
+                <input type="text" value={newTask} onChange={inputChange} placeholder='Enter a task...' />
+                <button onClick={addTask}>Add</button><br />
+
+
+                <ol>
+                    { 
+                        tasks.map( (task, index) => 
+                            <li key={index}>
+                                {task}
+                                &nbsp; &nbsp;
+                                <button onClick={() => removeTask(index)}>delect</button>
+                                <button onClick={() => moveTaskUp(index)}>👆</button>
+                                <button onClick={() => moveTaskDown(index)}>👇</button>
+                            </li>
+                        ) 
+                    }
+                </ol>
+            </div>
+        )
+    }
+
+    export default My_Component
+]
+
+
+/// useEffect() React Hook \\\
+[
+    useEffect() = React Hook that tells React to DO SOME CODE WHEN:
+                  This Component re-renders
+                  This component mounts
+                  The state of a value changes.
+
+    eg: useEffect(function, [dependencies])
+    THINK OF IT LIKE A SIDE CODE.
+    THE 'function' COULD BE A CALLBACK, ANONUMOIS FUNCTION, OR AN ARROW FUNCTION.
+    THE [dependencies] ARE OPTIONAL.  
+    
+
+    1. useEffect(() => {})          // Runs After Every Re-render( every reload, and every time something changes on the screen and DOM. )
+    2. useEffect(() => {}, [])      // Runs Only On Mount ( reload NOT PART )
+    3. useEffect(() => {}, [value])  // Runs On Mount + When 'value' Change
+
+    // USES
+    1. Event Listeners
+    2. DOM Manipulations
+    3. Subscriptions (real-time updates)
+    4. Fetching Data from an API
+    5. Clean up when a component unmounts
+
+
+    // IMPORTING useEffect \\
+    [ import React, {useState, useEffect} from 'react';]
+
+    // ALWAYS TRY TO PLACE RIGTH UNDER THE useState() IN THE FUNCTION COMPONENT.
+    
+    /// EXAMPLE 1 - useEffect(() => {}) [Runs After Every Re-render] \\\
+    // CHANGE DOCUMENT TITLE ON BUTTON CLICK \\
+    [
+        import React, {useState, useEffect} from 'react';
+
+        function My_Component() {
+            
+            const [count, setCount] = useState(0);
+
+            useEffect(() => {
+                document.title = `Count ${count}`
+            })
+
+            const addCount = () => {
+                setCount(c => c + 1)
+            }
+
+            return (
+                <div>
+                    <h2>Count: {count}</h2>
+                    <button onClick={addCount}>Add</button>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+
+    /// EXAMPLE 2 - useEffect(() => {}, []) [Runs Only On Mount] \\\
+    // CHANGE DOCUMENT TITLE ON BUTTON CLICK Once \\
+    [
+        import React, {useState, useEffect} from 'react';
+
+        function My_Component() {
+            
+            const [count, setCount] = useState(0);
+
+            useEffect(() => {
+                document.title = "My Counter Program"
+            }, [])
+
+            const addCount = () => {
+                setCount(c => c + 1)
+            }
+
+            return (
+                <div>
+                    <h2>Count: {count}</h2>
+                    <button onClick={addCount}>Add</button>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+
+    /// EXAMPLE 3 - useEffect(() => {}, [value]) [Runs On Mount + When 'value' Change] \\\
+    // CHANGE DOCUMENT TITLE ON 'value' OR 'color' CHANGE \\
+    [
+        import React, {useState, useEffect} from 'react';
+
+        function My_Component() {
+            
+            const [count, setCount] = useState(0);
+            const [color, setColor] = useState("green");
+
+            // RUN THIS CODE, EVEN-EVER 'count' OR 'color' CHANGES
+            useEffect(() => {
+                document.title = `Count ${count} ${color}`;
+            }, [count, color])
+
+            const addCount = () => setCount(c => c + 1)
+            
+            const subtractCount = () => setCount(c => c - 1)
+            
+            const chgColor = () => setColor(c => c === "green" ? "red" : "green")
+
+            return (
+                <div>
+                    <h2 style={{color: color}}>Count: {count}</h2>
+                    <button onClick={addCount}>Add</button>
+                    <button onClick={subtractCount}>Subtract</button><b />
+                    <button onClick={chgColor}>Change Color</button>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+    ++!!! WHY USE useEffect() !!!++
+    [
+        1. KEEPS YOUR CODE ORGANIZED (U Can Tell When Exactly The Code Runs)
+        2. EVENTLISTER
+        3. SUBSCRIPTIONS (real-time update) AND MORE ADAVNCE FEATURES.
+        4. YOU HAVE THE OPTION TO DO SOME CLEAN UP CODE
+    ]
+
+    /// CLEAN UP FUNCTION \\\
+    [
+        useEffect(() => {
+            document.title = `Count ${count} ${color}`;
+
+            // IF YOU USE eventlisteners, intervals, AND OTHER ADAVNCE, 
+            // YOU MUST USE THE CLEAN UP FUNCTION
+            // IF YOU DON'T IT MIGHT LEAD TO UNEXPECTED BEHAVIOUS
+            return () => {
+                // SOME CLEANUP CODE BEFORE UNMOUNTING
+                // EG: remove eventlisteners, and so on.
+            }
+        })
+    ]
+
+
+    // CLEANUP FUNCTION - WIDTH AND HEIGHT \\
+    [
+        import React, {useState, useEffect} from 'react';
+
+        function My_Component() {
+            
+            const [width, setWidth] = useState(window.innerWidth);
+            const [height, setHeight] = useState(window.innerHeight);
+
+            useEffect(() => {
+                window.addEventListener("resize", handleResize);
+                console.log("EVENT LISTENER ADDED");
+                
+                // THE CLEAN-UP FUNCTION CAN BE USED TO FREE-UP RESOURCES
+                // YOU CAN CLEAN-UP BEFORE THE NEXT Re-render, OR WHEN YOU UNMOUNT THE COMPOMENT.
+                // CHECK YOUR CONSOLE TO UNDERSTAND HOW IT REALLY WORKS, AND I'TS IMPORTANCE.
+                return () => {
+                    window.removeEventListener("resize", handleResize)
+                    console.log("EVENT LISTENER REMOVED");
+                }
+            }, [])
+
+            const handleResize = () => {
+                setWidth(window.innerWidth)
+                setHeight(window.innerHeight)
+            }
+
+            
+            return (
+                <div>
+                    <h2>Wigth: {width}px</h2>
+                    <h2>Higth: {height}px</h2>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+
+    |++| WE CAN HAVE MORE THAN ONE useEffect() IN ONE COMPONENT |++|
+    // CHANGE document's title TO WINDOW'S width AND height value, WHEN EITHER THE width OR height CHANGES
+    [
+        import React, {useState, useEffect} from 'react';
+
+        function My_Component() {
+            
+            const [width, setWidth] = useState(window.innerWidth);
+            const [height, setHeight] = useState(window.innerHeight);
+
+            useEffect(() => {
+                window.addEventListener("resize", handleResize);
+                console.log("EVENT LISTENER ADDED");
+                
+                // THE CLEAN-UP FUNCTION CAN BE USED TO FREE-UP RESOURCES
+                // YOU CAN CLEAN-UP BEFORE THE NEXT Re-render, OR WHEN YOU UNMOUNT THE COMPOMENT.
+                // CHECK YOUR CONSOLE TO UNDERSTAND HOW IT REALLY WORKS, AND I'TS IMPORTANCE.
+                return () => {
+                    window.removeEventListener("resize", handleResize)
+                    console.log("EVENT LISTENER REMOVED");
+                }
+            }, [])
+
+            useEffect(() => {
+                document.title = `Size: ${width} x ${height}`
+            }, [width, height])
+
+            const handleResize = () => {
+                setWidth(window.innerWidth)
+                setHeight(window.innerHeight)
+            }
+
+            
+            return (
+                <div>
+                    <h2>Wigth: {width}px</h2>
+                    <h2>Higth: {height}px</h2>
+                </div>
+            )
+        }
+
+        export default My_Component
+    ]
+]
+
+
+
+//// PROJECT 5 - DIGITAL CLOCK \\\\
+[
+    import React, {useState, useEffect} from 'react';
+
+    function My_Component() {
+        
+        const [time, setTime] = useState(new Date());
+
+        useEffect(() => {
+
+            const intervalId = setInterval(() => {
+                setTime(new Date())
+            }, 1000);
+            console.log("INTERVAL ADDED");
+
+            return () => {
+                clearInterval(intervalId)
+                console.log("INTERVAL REMOVED");
+            }
+        }, [])
+
+        const formatTime = () => {
+            let hours = time.getHours();
+            const minutes = time.getMinutes();
+            const seconds = time.getSeconds();
+            const meridiem = hours >= 12 ? "PM" : "AM";
+            
+            hours = hours % 12 || 12;
+
+            return `${addZero(hours)}:${addZero(minutes)}:${addZero(seconds)} ${meridiem}`
+        }
+
+        function addZero (num){
+            // USING STRING CONCATENATION TO ADD "0" IF NEEDERED.
+            return (num < 10 ? "0" : "") + num;
+        }
+
+        
+        return (
+            <div>
+                <h2>{formatTime()}</h2>
+            </div>
+        )
+    }
+
+    export default My_Component
+]
+
+
+/// useContext() React Hook \\\
+[
+    useContext() = React Hook that allows you to share values
+                   between multiple levels of components
+                   WITHOUT using PROPS through each level.
+
+    // FOUR DIFFERENT COMPOMENT/FILES.
+    ComponentA.jsx
+    ComponentB.jsx
+    ComponentC.jsx
+    ComponentD.jsx
+
+ 
+    PROVIDER COMPOMENT
+    [
+        1. import React, {useState, createContext} from 'react';
+        2. export const MyContext = createContext(); // BEFORE THE FUNCTION COMPOMENT
+        3. <MyContext.Provider value={value}>
+            <Child />
+           </MyContext.Provider>
+
+        EXAMPLE
+        [
+            import React, {useState, createContext} from 'react';
+            import ComponentB from './ComponentB';
+
+            // The Context Name Depends On What You Want To Use It For.
+            // If For A Color You Can Say 'ColorContext' If A User 'UserContext' And So On.
+            export const UserContext = createContext();
+
+            function ComponentA() {
+
+                const [user, setUser] = useState("Dhope")
+
+                return (
+                    <div style={{border: '3px solid', padding: '25px'}}>
+                        
+                        <h1>Component A</h1>
+                        <h2>{`Hello ${user}`}</h2> 
+
+                        <UserContext.Provider value={user}>
+                            <ComponentB />
+                        </UserContext.Provider>
+                    </div>
+                )
+            }
+
+            export default ComponentA
+        ]
+    ]
+
+    Any Component Which Needs Data From ComponentA,
+    Must Setup As A Consumer Component To Access Data.
+
+    CONSUMER COMPOMENT
+    [
+        Any Component Which Is A Child Of The PROVIDER COMPOMENT,
+        Has Access To The Data We SetUp, AFTER THE CHILD HAS IMPORT THE FOLLOWING BELOW.
+
+        1. import React, { useContext } from 'react';
+           import { MyContext } from './ComponentA'
+        2. const value = useContext(MyContext);
+
+        EXAMPLE 
+        [
+            -- ComponentD --
+            [
+                import React, {useContext} from 'react';
+                import { UserContext } from "./ComponentA";
+
+                function ComponentD() {
+
+                    // Access Data From ComponentA, 
+                    // and Store It In Any Variable Name You Prefer 'gotUser'
+                    const gotUser = useContext(UserContext);
+                    
+                    return (
+                        <div style={{border: '3px solid', padding: '25px'}}>
+                            <h1>Component D</h1>
+                            <h2>{`Bye ${gotUser}`}</h2>
+                        </div>
+                    )
+                }
+
+                export default ComponentD
+            ]
+
+            -- ComponentC --
+            [
+                import React, {useContext} from 'react';
+                import { UserContext } from "./ComponentA";
+                import ComponentD from './ComponentD';
+
+                function ComponentC() {
+
+                    const sayHi = useContext(UserContext);
+                    
+                    return (
+                        <div style={{border: '3px solid', padding: '25px'}}>
+                            <h1>Component C</h1>
+                            <h2>{`Hi There: ${sayHi}`}</h2>
+                            <ComponentD />
+                        </div>
+                    )
+                }
+
+                export default ComponentC
+            ]
+        ]
+    ]
+]
+
+
+/// useRef() React Hook \\\
+[
+    useRef() is similer to useState().
+
+    BUT,
+    useState() = Re-renders the component, when the state of the value changes.
+
+    useRef() = "use Reference" Does Not cause re-render, when its value changes.
+               When you want a component to "remember" some information,
+               but you don't want that information to trigger new renders, then you use useRef() NOT useState().
+
+    // USES OF useRef() \\
+    1. Accessing/interaction with DOM elements.
+    2. Handling Focus, Animations, and Transitions.
+    3. Managing Timers and Intervals.
+
+    Importing useRef() [ import React, {uesRef} from 'react' ]
+
+    
+    useRef() returns an object, an object with a single 'current property',
+    Initially set to the Initial value you provide it.
+    ++ FOR MORE EXPLANATION ++
+    [
+        const ref = useRef(0);
+        // useRef() is an Object with one property: 'current'
+        // 'current' value is defaultly set as undefined, 
+        // But the value you pass to 'useRef()' eg:[ useRef(0) ]
+        // Will change 'current' value to '0'
+        // CHECK CONSOLE TO ACKNOWNLEDGE
+        console.log(ref);
+    ]
+    
+
+    |++| DIFFERENT BETWEEN useRef() AND useState() |++|
+    [
+        ++ CHECK YOUR CONSOLE FOR DIFFERENCE ++
+
+        useState()
+        [
+            import React, { useState, useEffect } from "react";
+
+            function My_Component () {
+
+                const [num, setNum] = useState(0);
+
+                // RUN THIS CODE VERY TIME 'My_Component' RE-RENDERS.
+                useEffect(() => {
+                    console.log("COMPONENT RENDERED");
+                })
+
+                const handleClick = () => {
+                    setNum(n => n + 1);
+                }
+
+                return (
+                    <button onClick={handleClick}>Click me!</button>
+                )
+            }
+
+            export default My_Component
+        ]
+
+        useRef()
+        [
+            import React, { useRef, useEffect } from "react";
+
+            function My_Component () {
+
+                const ref = useRef(0);
+                // useRef() is an Object with one property: 'current'
+                // 'current' value is defaultly set as undefined, 
+                // But the value you pass to 'useRef()' eg:[ useRef(0) ]
+                // Will change 'current' value to '0'
+                // CHECK CONSOLE TO ACKNOWNLEDGE
+                // console.log(ref);
+                
+
+                // RUN THIS CODE VERY TIME 'My_Component' RE-RENDERS.
+                useEffect(() => {
+                    console.log("COMPONENT RENDERED");
+                })
+
+                const handleClick = () => {
+                    // Access The 'current' property of 'ref' and Add '1' To It
+                    // Anytime you click the button and class the function
+                    // ref.current = ref.current + 1;
+
+                    // OR WE CAN USE THE INCREMENT OPERATOR.
+                    ref.current++;
+                    console.log(ref.current);
+                }
+
+                return (
+                    <button onClick={handleClick}>Click me!</button>
+                )
+            }
+
+            export default My_Component
+        ]
+    ]
+
+
+    /// USING 'ref' WITH HTML ELEMENTS \\\
+    // THE 'ref' ATTRIBUTE \\
+    [
+        The 'current' property of the 'ref' object, 
+        can also refer to an HTML Element, Thus Why 'useRef' Is Really Helpful.
+
+        The 'ref' Attribute of an HTML Element, 
+        Is a Special Attribute used to create Reference to Elements.
+
+        SEE WHAT IT CONTAINS WITH YOUR CONSOLE
+        [
+            const inputRef = useRef(null);
+            console.log(inputRef);
+
+            return <input ref={inputRef} />
+        ]
+
+
+        // GIVE THE INPUT ELEMENT FOCUS, AND Chg bgColor ON BUTTON CLICK \\
+        [
+            import React, { useRef, useEffect } from "react";
+
+            function My_Component () {
+
+                // NAME THE 'ref' TO WHAT YOU'RE USING IT FOR.
+                const inputRef = useRef(null);
+
+                // RUN THIS CODE VERY TIME 'My_Component' RE-RENDERS.
+                useEffect(() => {
+                    console.log("COMPONENT RENDERED");
+                })
+
+                const handleClick = () => {
+                    // Give The Input Elements Focus
+                    inputRef.current.focus();
+                    // chg bgColor of input element
+                    inputRef.current.style.backgroundColor = "green";
+                }
+
+                return (
+                    <div>
+                        <button onClick={handleClick}>Click me!</button>
+                        <input ref={inputRef} />
+                    </div>
+                )
+            }
+
+            export default My_Component
+        ]
+    ]
+]
+
+
+//// PROJECT 6 - STOP WATCH \\\\
+[
+    import React, { useState, useEffect, useRef } from "react";
+
+    function My_Component () {
+
+        const [isRunning, set_IsRunning] = useState(false);
+        const [elapsedTime, set_ElapsedTime] = useState(0);
+        let intervalId_Ref = useRef(null);
+        const start_TimeRef = useRef(0);
+
+        useEffect(() => {
+
+            if (isRunning) {
+                intervalId_Ref = setInterval(() => {
+                    set_ElapsedTime(Date.now() - start_TimeRef.current);
+                }, 10);
+            }
+
+            return () => clearInterval(intervalId_Ref)
+        }, [isRunning])
+
+
+        const start = () => {
+            set_IsRunning(true)
+            start_TimeRef.current = Date.now() - elapsedTime;
+        };
+
+        const stop = () => set_IsRunning(false);
+
+        const reset = () => {
+            set_IsRunning(false);
+            set_ElapsedTime(0);
+        }
+
+        const format_Time = () => {
+
+            let hours = Math.floor(elapsedTime / (1000 * 60 * 60));
+            let minutes = Math.floor(elapsedTime / (1000 * 60) % 60);
+            let seconds = Math.floor(elapsedTime / (1000) % 60);
+            let miliseconds = Math.floor((elapsedTime % 1000) / 10);
+
+            hours = String(hours).padStart(2, "0")
+            minutes = String(minutes).padStart(2, "0")
+            seconds = String(seconds).padStart(2, "0")
+            miliseconds = String(miliseconds).padStart(2, "0")
+
+            return `${minutes}:${seconds}:${miliseconds}`;
+        }
+
+        //const add_Zero = (num) => (num < 10 ? "0" : "") + num;
+
+        return (
+            <div>
+                <h2>{format_Time()}</h2>
+
+                <button onClick={start}>Start</button>
+                <button onClick={stop}>Stop</button>
+                <button onClick={reset}>Reset</button>
+            </div>
+        )
+    }
+
+    export default My_Component
+]
+
+
+
+
+
+--! NOTE !--
+IN THE RETURN STATEMENT [
+    for string data = "string here"
+    NOT String = {27}, {variable_Name}, {true}
+
+    SHORT CUT FOR TERNRATOR OPERATION(SIMPLY IF-STATEMENT)
+    [
+        -- SIMPLY IF-STATEMENT --
+            { fruits.length > 0 ? <List items={fruits} category="Fruits"/> : null }
+        
+        -- SHORT-HAND SIMPLY IF-STATEMENT (known as short Crituiting) --
+            { fruits.length > 0 && <List items={fruits} category="Fruits"/> }
+    ]
+]
+
+
++++++ Finished Refreshing On ReactJS On The 31th October, 2024 16:52 Thursday Evening. +++++ 
+
+++|| END OF LESSION PROJECTS ||++
+1. What's On Your Mind(DISPLAY WHAT I TYPE)  ++ { DONE } ++
+2. Dark and Ligth Theme                      ++ { DONE } ++
+3. Google Search Engern                      ++ { DONE } ++
+4. Login and Signup Page                     ++ { DONE } ++
+5. ECOMM
+
+
+

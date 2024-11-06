@@ -1,0 +1,24 @@
+
+.google_Search {
+    height: 100dvh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h1 {
+        font-size: 6vw;
+    }
+
+    input[type="search"] {
+        width: 45%;
+        background: #464545;
+        color: rgb(255, 255, 255);
+        font-size: 1.2vw;
+        padding: 0.7em;
+        border: none;
+        border-radius: 0.2em;
+    }
+}
+
